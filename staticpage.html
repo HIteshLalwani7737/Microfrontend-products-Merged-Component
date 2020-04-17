@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>This is Static Page(Suppose running on some server)</h2>
+<div id="demo">
+  <button type="button" onclick="loadDoc()">Change Content(Now onclick Component runnning on port 8080 will load)</button>
+</div>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+function loadDoc() {
+const Http = new XMLHttpRequest();
+const url='http://192.168.43.153:8080';
+Http.open("GET", url);
+Http.send();
+Http.onreadystatechange=(e)=>{
+console.log(Http.responseText)
+document.getElementById("demo").innerHTML = Http.responseText;
+}
+}
+</script>
+</html>
